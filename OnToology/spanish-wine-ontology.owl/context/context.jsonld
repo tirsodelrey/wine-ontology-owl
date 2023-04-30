@@ -1,0 +1,133 @@
+{
+  "@context" : {
+    "WineColor" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#WineColor"
+    },
+    "Winery" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Winery"
+    },
+    "WineTaste" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#WineTaste"
+    },
+    "Country" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Country"
+    },
+    "topDataProperty" : {
+      "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+    },
+    "StillWine" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#StillWine"
+    },
+    "hasWinery" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasWinery",
+      "@type" : "@id"
+    },
+    "isRuleEnabled" : {
+      "@id" : "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"
+    },
+    "Fruit" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Fruit"
+    },
+    "hasWineDescriptor" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasWineDescriptor",
+      "@type" : "@id"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "isMadeWith" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#isMadeWith",
+      "@type" : "@id"
+    },
+    "hasHarvestYear" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasHarvestYear",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "hasWine" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasWine",
+      "@type" : "@id"
+    },
+    "hasType" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasType",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "topObjectProperty" : {
+      "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty",
+      "@type" : "@id"
+    },
+    "AlcoholicBeverage" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#AlcoholicBeverage"
+    },
+    "Grape" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Grape"
+    },
+    "PinkWine" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#PinkWine"
+    },
+    "Consumable" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Consumable"
+    },
+    "WhiteWine" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#WhiteWine"
+    },
+    "SparklingWine" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#SparklingWine"
+    },
+    "WineAcidity" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#WineAcidity"
+    },
+    "hasWineAcidityScore" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasWineAcidityScore",
+      "@type" : "http://www.w3.org/2001/XMLSchema#int"
+    },
+    "FullBodied" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#FullBodied"
+    },
+    "Dry" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Dry"
+    },
+    "WineDescriptor" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#WineDescriptor"
+    },
+    "LightBodied" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#LightBodied"
+    },
+    "hasBodyScore" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasBodyScore",
+      "@type" : "http://www.w3.org/2001/XMLSchema#int"
+    },
+    "sameAs" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#sameAs"
+    },
+    "comment" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "hasPriceInEuros" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasPriceInEuros",
+      "@type" : "http://www.w3.org/2001/XMLSchema#int"
+    },
+    "hasRegion" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasRegion",
+      "@type" : "@id"
+    },
+    "Region" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Region"
+    },
+    "hasCountry" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasCountry",
+      "@type" : "@id"
+    },
+    "WineBody" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#WineBody"
+    },
+    "RedWine" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#RedWine"
+    },
+    "Sweet" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Sweet"
+    },
+    "Wine" : {
+      "@id" : "http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Wine"
+    }
+  }
+}

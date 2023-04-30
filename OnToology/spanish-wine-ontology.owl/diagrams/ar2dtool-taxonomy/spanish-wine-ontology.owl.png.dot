@@ -1,0 +1,23 @@
+digraph ar2dtool_diagram { 
+rankdir=LR;
+size="1000"
+node [shape = rectangle, color="black"]; "spanish-wine-ontology:WineBody" "spanish-wine-ontology:AlcoholicBeverage" "spanish-wine-ontology:WineAcidity" "spanish-wine-ontology:Fruit" "spanish-wine-ontology:PinkWine" "spanish-wine-ontology:Grape" "spanish-wine-ontology:WineDescriptor" "spanish-wine-ontology:Sweet" "spanish-wine-ontology:Dry" "spanish-wine-ontology:WineColor" "spanish-wine-ontology:FullBodied" "spanish-wine-ontology:WhiteWine" "spanish-wine-ontology:RedWine" "spanish-wine-ontology:StillWine" "spanish-wine-ontology:WineTaste" "spanish-wine-ontology:SparklingWine" "spanish-wine-ontology:Consumable" "spanish-wine-ontology:LightBodied" "spanish-wine-ontology:Wine" ; /*classes style*/
+	"spanish-wine-ontology:Wine" -> "spanish-wine-ontology:AlcoholicBeverage" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:WineColor" -> "spanish-wine-ontology:WineDescriptor" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:PinkWine" -> "spanish-wine-ontology:WineColor" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:WineBody" -> "spanish-wine-ontology:WineDescriptor" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:AlcoholicBeverage" -> "spanish-wine-ontology:Consumable" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:Fruit" -> "spanish-wine-ontology:Consumable" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:Dry" -> "spanish-wine-ontology:WineAcidity" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:Sweet" -> "spanish-wine-ontology:WineAcidity" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:FullBodied" -> "spanish-wine-ontology:WineBody" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:WineAcidity" -> "spanish-wine-ontology:WineTaste" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:WhiteWine" -> "spanish-wine-ontology:WineColor" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:LightBodied" -> "spanish-wine-ontology:WineBody" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:Grape" -> "spanish-wine-ontology:Fruit" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:RedWine" -> "spanish-wine-ontology:WineColor" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:StillWine" -> "spanish-wine-ontology:Wine" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:SparklingWine" -> "spanish-wine-ontology:Wine" [ label = "rdfs:subClassOf" ];
+	"spanish-wine-ontology:WineTaste" -> "spanish-wine-ontology:WineDescriptor" [ label = "rdfs:subClassOf" ];
+
+}

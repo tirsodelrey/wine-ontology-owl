@@ -1,0 +1,569 @@
+@prefix : <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#> .
+
+<http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology> rdf:type owl:Ontology ;
+                                                                                  rdfs:comment "Author: Tirso del Rey Gumb" ;
+                                                                                  rdfs:label "Spanish Wine" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#sameAs
+rdfs:sameAs rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasCountry
+:hasCountry rdf:type owl:ObjectProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain :Region ;
+            rdfs:range :Country ;
+            rdfs:comment "Defines the relation between a region and its country." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasRegion
+:hasRegion rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdf:type owl:AsymmetricProperty ;
+           rdfs:domain :Wine ;
+           rdfs:range :Region ;
+           rdfs:comment "Propierty that the defines the relation between a wine and its region of origin." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasWine
+:hasWine rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         owl:inverseOf :hasWinery ;
+         rdf:type owl:AsymmetricProperty ;
+         rdfs:domain :Winery ;
+         rdfs:range :Wine .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasWineDescriptor
+:hasWineDescriptor rdf:type owl:ObjectProperty ,
+                            owl:AsymmetricProperty ;
+                   rdfs:domain :Wine ;
+                   rdfs:range :WineDescriptor ;
+                   rdfs:comment "Defines the relation between a wine and a descriptor used to classify or describe some aspect of the wine." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasWinery
+:hasWinery rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain :Wine ;
+           rdfs:range :Winery ;
+           rdfs:comment "Defines the relation between a wine and its producer, the winery." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#isMadeWith
+:isMadeWith rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdf:type owl:AsymmetricProperty ;
+            rdfs:domain :Wine ;
+            rdfs:range :Grape ;
+            rdfs:comment "Defines the relation between wine and its primary source, grapes." .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasBodyScore
+:hasBodyScore rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdf:type owl:FunctionalProperty ;
+              rdfs:domain :Wine ;
+              rdfs:range xsd:int ;
+              rdfs:comment "Propiety that indicates as the richness and weight of the wine in your mouth [from 1-5]" ;
+              rdfs:label "hasBodyScore" .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasHarvestYear
+:hasHarvestYear rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdf:type owl:FunctionalProperty ;
+                rdfs:domain :Wine ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Property that indicates the year of harvest of the wine's grape." ;
+                rdfs:label "hasHarvestYear" .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasPriceInEuros
+:hasPriceInEuros rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdf:type owl:FunctionalProperty ;
+                 rdfs:domain :Wine ;
+                 rdfs:range xsd:int ;
+                 rdfs:comment "Cost in euros of a bottle of a given wine." ;
+                 rdfs:label "hasPriceInEuros" .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasType
+:hasType rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Wine ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#hasWineAcidityScore
+:hasWineAcidityScore rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:domain :Wine ;
+                     rdfs:range xsd:int ;
+                     rdfs:comment "Acidity score, defined as wine's “pucker” or tartness [from 1-5]." ;
+                     rdfs:label "hasWineAcidityScore" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#AlcoholicBeverage
+:AlcoholicBeverage rdf:type owl:Class ;
+                   rdfs:subClassOf :Consumable ;
+                   rdfs:comment "Drink that contains ethanol and is intended for human consumption." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Consumable
+:Consumable rdf:type owl:Class ;
+            rdfs:comment "Item intended to be used up." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Country
+:Country rdf:type owl:Class ;
+         rdfs:comment "Country of origin of the wine." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Dry
+:Dry rdf:type owl:Class ;
+     rdfs:subClassOf :WineAcidity ;
+     rdfs:comment "Wine that has a sour or sharp taste." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Fruit
+:Fruit rdf:type owl:Class ;
+       rdfs:subClassOf :Consumable ;
+       rdfs:comment "The fleshy or dry ripened ovary of a flowering plant, enclosing the seed or seeds." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#FullBodied
+:FullBodied rdf:type owl:Class ;
+            rdfs:subClassOf :WineBody ;
+            owl:disjointWith :LightBodied ;
+            rdfs:comment "Wine with a higher percentaje of alcohol, heavy and rich." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Grape
+:Grape rdf:type owl:Class ;
+       rdfs:subClassOf :Fruit ;
+       rdfs:comment "Small round fruit that grows from a vine." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#LightBodied
+:LightBodied rdf:type owl:Class ;
+             rdfs:subClassOf :WineBody ;
+             rdfs:comment "Wine with a lower percentage of alcohol, usually crisp and refreshing." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#PinkWine
+:PinkWine rdf:type owl:Class ;
+          rdfs:subClassOf :WineColor ;
+          rdfs:comment "Pink variety of wine." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#RedWine
+:RedWine rdf:type owl:Class ;
+         rdfs:subClassOf :WineColor ;
+         rdfs:comment "Red variety of wine." ;
+         rdfs:sameAs "https://dbpedia.org/page/Red_wine" .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Region
+:Region rdf:type owl:Class ;
+        rdfs:comment "Region of the wine." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#SparklingWine
+:SparklingWine rdf:type owl:Class ;
+               rdfs:subClassOf :Wine ;
+               owl:disjointWith :StillWine ;
+               rdfs:comment "Carbonated wine that has bubbles created through a secondary fermentation process." ;
+               rdfs:sameAs "https://dbpedia.org/page/Sparkling_wine" .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#StillWine
+:StillWine rdf:type owl:Class ;
+           rdfs:subClassOf :Wine ;
+           rdfs:comment "Still wine is a non-carbonated wine that does not undergo the secondary fermentation process." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Sweet
+:Sweet rdf:type owl:Class ;
+       rdfs:subClassOf :WineAcidity ;
+       rdfs:comment "Wine with a sugary taste." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#WhiteWine
+:WhiteWine rdf:type owl:Class ;
+           rdfs:subClassOf :WineColor ;
+           rdfs:comment "White variety of wine." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Wine
+:Wine rdf:type owl:Class ;
+      rdfs:subClassOf :AlcoholicBeverage ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasWinery ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Winery
+                      ] ;
+      rdfs:comment "Alcoholic drink made from grapes through fermentation process." ;
+      rdfs:sameAs "https://dbpedia.org/page/Wine" .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#WineAcidity
+:WineAcidity rdf:type owl:Class ;
+             rdfs:subClassOf :WineTaste ;
+             rdfs:comment "Gives a wine its tart and sour taste." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#WineBody
+:WineBody rdf:type owl:Class ;
+          rdfs:subClassOf :WineDescriptor ;
+          rdfs:comment "Defines how heavy and rich a wine tastes." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#WineColor
+:WineColor rdf:type owl:Class ;
+           rdfs:subClassOf :WineDescriptor ;
+           rdfs:comment "Descriptor of wine variety based on coloration." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#WineDescriptor
+:WineDescriptor rdf:type owl:Class ;
+                rdfs:comment "Characteristic used to describe some aspect of the wine." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#WineTaste
+:WineTaste rdf:type owl:Class ;
+           rdfs:subClassOf :WineDescriptor ;
+           rdfs:comment "Description of the effect that the wine has on our taste buds." .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Winery
+:Winery rdf:type owl:Class ;
+        rdfs:comment "The property, winemaking equipment, warehouses, bottling facilities, etc., that are involved in the winemaking process." .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Cava
+:Cava rdf:type owl:NamedIndividual ,
+               :Region ;
+      :hasCountry :Spain .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Contino
+:Contino rdf:type owl:NamedIndividual ,
+                  :Winery .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Hacienda_monasterio
+:Hacienda_monasterio rdf:type owl:NamedIndividual ,
+                              :Winery .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Recaredo
+:Recaredo rdf:type owl:NamedIndividual ,
+                   :Winery .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Reserva
+:Reserva rdf:type owl:NamedIndividual ,
+                  :RedWine ,
+                  :StillWine ;
+         :hasRegion :Ribera_del_Duero ;
+         :hasWinery :Hacienda_monasterio ;
+         :hasBodyScore 5 ;
+         :hasHarvestYear "2017" ;
+         :hasPriceInEuros 50 ;
+         :hasType "Ribera del duero red" ;
+         rdfs:label "Reserva" .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Reserva2
+:Reserva2 rdf:type owl:NamedIndividual ,
+                   :RedWine ,
+                   :StillWine ;
+          :hasRegion :Rioja ;
+          :hasWinery :Contino ;
+          :hasWineAcidityScore 5 ;
+          rdfs:label "Reserva" .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Ribera_del_Duero
+:Ribera_del_Duero rdf:type owl:NamedIndividual ,
+                           :Region ;
+                  :hasCountry :Spain .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Rioja
+:Rioja rdf:type owl:NamedIndividual ,
+                :Region ;
+       :hasCountry :Spain .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Spain
+:Spain rdf:type owl:NamedIndividual ,
+                :Country .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Tempranillo
+:Tempranillo rdf:type owl:NamedIndividual ,
+                      :Grape .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Teso_la_monja
+:Teso_la_monja rdf:type owl:NamedIndividual ,
+                        :Winery ;
+               :hasWine :Tinto .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Tinto
+:Tinto rdf:type owl:NamedIndividual ,
+                :RedWine ,
+                :StillWine ;
+       :hasRegion :Toro ;
+       :hasWinery :Teso_la_monja ;
+       :hasBodyScore 5 ;
+       :hasHarvestYear "2013" ;
+       :hasPriceInEuros 995 ;
+       :hasType "Toro Red" ;
+       :hasWineAcidityScore 5 .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Toro
+:Toro rdf:type owl:NamedIndividual ,
+               :Region ;
+      :hasCountry :Spain .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Turo_den_Mota
+:Turo_den_Mota rdf:type owl:NamedIndividual ,
+                        :SparklingWine ,
+                        :WhiteWine ;
+               :hasRegion :Cava ;
+               :hasWinery :Recaredo ;
+               :hasBodyScore 2 ;
+               :hasHarvestYear "2007" ;
+               :hasPriceInEuros 99 ;
+               :hasType "Cava" ;
+               :hasWineAcidityScore 1 .
+
+
+###  http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/spanish-wine-ontology#Vina_del_Olivo
+:Vina_del_Olivo rdf:type owl:NamedIndividual ,
+                         :Wine ;
+                :hasRegion :Rioja ;
+                :hasWinery :Contino ;
+                :hasBodyScore 4 ;
+                :hasHarvestYear "2001" ;
+                :hasPriceInEuros 81 ;
+                :hasType "Rioja red" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :PinkWine
+                :RedWine
+                :WhiteWine
+              )
+] .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+<http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/p> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/acidity> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/body> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<urn:swrl:var#p> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<urn:swrl:var#acidity> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S2" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Wine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/p>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasBodyScore ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/p> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/body>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/body> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 2.5 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :FullBodied ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/p>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S3" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Wine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/p>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasBodyScore ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/p> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/body>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/body> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 2.5 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :LightBodied ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/p>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Wine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#p>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasWineAcidityScore ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#p> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#acidity>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <urn:swrl:var#acidity> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 2.5 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Dry ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#p>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S4" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Wine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/p>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasWineAcidityScore ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/p> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/acidity>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/acidity> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 2.5 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Sweet ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/tirsodelrey/ontologies/2023/3/untitled-ontology-2/p>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
